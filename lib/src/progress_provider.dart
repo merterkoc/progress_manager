@@ -13,7 +13,7 @@ class ListenProgress {
     BuildContext context,
   ) {
     _subscription = progressProvider.stream.listen((count) {
-      if (count == 1) {
+      if (count == 1 && !context.loaderOverlay.visible) {
         context.loaderOverlay.show();
       } else if (count == 0) {
         context.loaderOverlay.hide();
