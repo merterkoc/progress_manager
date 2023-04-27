@@ -44,12 +44,13 @@ Future<List<Station>?> fetchData() async {
   final response = await _dioClient.get(_getDataPath);
   if (response.statusCode == 200) {
     var list = (response.data as List).map((e) => Data.fromJson(e)).toList();
-    LoaderProvider().increment(); // if you want to decrement the stack
+    LoaderProvider().decrement(); // if you want to decrement the stack
     return list;
   } else {
     LoaderProvider().decrement(); // if you want to decrement the stack
     throw Exception('Failed to load data');
   }
+  /// Warning: When you increase it, you should decrease it when the call ends. Otherwise you will see progress forever
 }
 
 Future<List<Station>?> fetchDataOther() async {
