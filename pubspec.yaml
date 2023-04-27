@@ -1,0 +1,20 @@
+name: progress_manager
+description: A progress management tool where you can manage your progress by pushing and pulling on a stack
+version: 0.0.1
+homepage: https://github.com/merterkoc/progress_manager
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  loader_overlay: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
