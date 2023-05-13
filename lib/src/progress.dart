@@ -55,7 +55,7 @@ class ProgressManager extends StatelessWidget {
   final Widget? Function(Widget, Animation<double>)? transitionBuilder;
 
   /// The layout builder for the overlay
-  final Widget? Function(Widget?, List<Widget>)? layoutBuilder;
+  final Widget Function(Widget?, List<Widget>) layoutBuilder;
 
   static const _prefix = '@loader-overlay';
 
@@ -89,7 +89,7 @@ class ProgressManager extends StatelessWidget {
       this.switchInCurve,
       this.switchOutCurve,
       this.transitionBuilder,
-      this.layoutBuilder})
+      this.layoutBuilder = AnimatedSwitcher.defaultLayoutBuilder})
       : super(key: key);
 
   @override
@@ -104,10 +104,22 @@ class ProgressManager extends StatelessWidget {
       closeOnBackButton: false,
       overlayWholeScreen: false,
       child: child,
+      overlayWidget: overlayWidget,
+      disableBackButton: disableBackButton ?? true,
+      duration: duration ?? Duration.zero,
+      reverseDuration: reverseDuration,
+      overlayColor: overlayColor ?? defaultOverlayColor,
+      overlayOpacity: overlayOpacity ?? defaultOpacityValue,
+      overlayHeight: overlayHeight,
+      overlayWidth: overlayWidth,
+      switchInCurve: switchInCurve ?? Curves.linear,
+      switchOutCurve: switchOutCurve ?? Curves.linear,
+      transitionBuilder: AnimatedSwitcher.defaultTransitionBuilder,
+      useDefaultLoading: useDefaultLoading ?? useDefaultLoadingValue,
+      layoutBuilder: layoutBuilder,
     );
   }
 }
-
 
 class LoaderProvider {
   int _count = 0;
@@ -142,4 +154,3 @@ class LoaderProvider {
     _streamController.close();
   }
 }
-
