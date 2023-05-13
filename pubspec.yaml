@@ -1,6 +1,6 @@
 name: progress_manager
 description: A progress management tool where you can manage your progress by pushing and pulling on a stack
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/merterkoc/progress_manager
 
 environment:
